@@ -30,14 +30,14 @@ bind=function(){
  app.querySelectorAll('[data-v3-use]').forEach(el=>el.onclick=()=>useTemplate(el.dataset.v3Use));
 };
 const analytics={
- times:[280,490,650,920,1350,1250,980,760,430],
+ times:[380,690,1050,1320,1900,1730,1380,1050,700],
  stages:[['QR 스캔',12400],['게임 시작',10200],['정보 입력·동의 완료',6324],['게임 완료',5950],['경품 수령',4820]]
 };
 function funnelHTML(){
  return '<div class="v3-funnel">'+analytics.stages.map(([name,n],i)=>{const prev=i?analytics.stages[i-1][1]:n;const drop=i?((prev-n)/prev*100).toFixed(1)+'%':'—';return '<div class="v3-funnel-step"><div class="between"><strong>'+name+'</strong><span>'+n.toLocaleString()+'건 · 단계 이탈 '+drop+'</span></div><div class="v3-track"><div style="width:'+(100*n/analytics.stages[0][1]).toFixed(1)+'%"></div></div></div>'}).join('')+'</div>';
 }
 function analyticsPanels(reportMode){
- const bars=analytics.times.map((v,i)=>'<div class="v3-bar-cell"><div style="height:'+(100*v/1350).toFixed(1)+'%"></div><small>'+(10+i)+'시</small></div>').join('');
+ const bars=analytics.times.map((v,i)=>'<div class="v3-bar-cell"><div style="height:'+(100*v/1900).toFixed(1)+'%"></div><small>'+(10+i)+'시</small></div>').join('');
  const summary=reportMode?'종료 후 성과 분석':'운영 데이터 분석';
  return '<section class="panel v3-analytics"><div class="between"><div><span class="eyebrow">CAMPAIGN ANALYTICS</span><h2>'+summary+'</h2></div><span class="mini-label">시연 데이터 · 실제 수집/실시간 연동 전</span></div><div class="v3-statrow"><div><small>QR 스캔</small><strong>12,400</strong></div><div><small>게임 시작</small><strong>10,200</strong></div><div><small>게임 완료</small><strong>5,950</strong></div><div><small>QR → 완료</small><strong>48.0%</strong></div></div><div class="v3-analytics-grid"><div><h3>시간대별 게임 시작 추이</h3><p class="mini-label">14시 피크 · 시간대별 시연 수치</p><div class="v3-bars">'+bars+'</div></div><div><h3>참여 퍼널</h3><p class="mini-label">직전 단계 대비 이탈률</p>'+funnelHTML()+'</div></div><div class="v3-insight"><strong>✧ '+(reportMode?'성과 인사이트 및 다음 행사 제안':'운영 인사이트')+'</strong><p>정보 입력·동의 단계에서 <b>38.0% 이탈</b>이 발생합니다. 필수 입력 항목을 줄이고 동의 문구를 간결하게 정리해 보세요. 14시 전후에는 안내 인력을 집중 배치하는 것이 좋겠습니다.</p></div></section>';
 }
