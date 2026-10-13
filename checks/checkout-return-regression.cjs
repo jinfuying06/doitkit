@@ -15,5 +15,5 @@ assert.match(run('brandReview()'),/data-page-back>결제 화면으로 돌아가�
 run('navigateBack()');assert.equal(run('route()'),'checkout');
 run("go('review');go('brand-review')");assert.match(run('brandReview()'),/href="#review" class="btn secondary">검토 화면으로/);
 run('navigateBack()');assert.equal(run('route()'),'review');
-run("go('report');state.aiReport=false");assert.match(run('report()'),/초안 생성/);assert.doesNotMatch(run('report()'),/요약 초안 생성/);
+run("go('report');state.aiReport=false");assert.match(run('report()'),/AI 성과 분석 요약/);assert.doesNotMatch(run('report()'),/data-action="ai-report"/);assert.doesNotMatch(run('report()'),/요약 초안 생성/);
 console.log('PASS: checkout preview return context, ordinary review return and button labels');

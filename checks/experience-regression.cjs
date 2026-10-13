@@ -22,6 +22,6 @@ run("state.ended=false;state.published=true;retainEvent()");assert(run('applySch
 run("go('report');state.settings.reportTiming='지정 일시'");assert.match(run('report()'),/id="report-publish-at" type="datetime-local" step="60"/);
 run("state.aiReport=false;state.settings.reportTiming='지정 일시';go('report')");
 elements['report-timing']={value:'지정 일시'};elements['report-publish-at']={value:'2099-10-16T16:45'};
-run("action('share-report')");assert(run('state.settings.reportScheduledAt'));assert(!run('state.reportPublished'));ctx.scheduledAt=run('state.settings.reportScheduledAt');assert(run('applyScheduledChanges(scheduledAt)'));assert(run('state.reportPublished'));
+elements['report-text']={value:run('state.reportText')};run("action('confirm-report');action('share-report')");assert(run('state.settings.reportScheduledAt'));assert(!run('state.reportPublished'));ctx.scheduledAt=run('state.settings.reportScheduledAt');assert(run('applyScheduledChanges(scheduledAt)'));assert(run('state.reportPublished'));
 run("beginEvent('lumiere')");assert.match(run('basicInfo()'),/id="event-end-time" type="time" step="60" required/);
 console.log('PASS: distinct review guards, required confirmation, design-only draft, direct wheel sectors, brand authors, minute times, end confirmation/lock, automatic boundary, scheduled report picker');
