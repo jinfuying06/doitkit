@@ -1,11 +1,17 @@
-# 두잇킷 서비스 목업 v2.5
+# 두잇킷 서비스 목업 v3.0
 
 기업연계 수업 프로젝트의 사업제안을 설명하고 시연하기 위한 웹 목업입니다. 여러 브랜드의 행사 등록, 게임 제작, 고객 검토, 게시, 운영, 성과 공유를 하나의 흐름으로 보여줍니다.
 
-- 공개 목업: https://doitkit-mockup-v25.jinfuying06.chatgpt.site
-- 이 저장소는 공개 목업의 **Site 버전 41** 소스를 내보낸 것입니다. 제품 목업 이름은 v2.5입니다.
-- 기준 소스 커밋: `838786b799e3f5573012ebd391e477489b6313c2` (원본 Site 저장소)
+- 현재 목업: https://doitkit-v30.jinfuying06.chatgpt.site
+- 현재 저장소는 두잇킷 v3.0의 최신 수정 사항을 포함합니다. 행사 상태 다중 선택, 현재 날짜 기준 시연 일정, 운영·성과 분석, 고객 공유 미리보기를 제공합니다.
+- 분석·추천·경품 발송은 시연용이며 실제 외부 서비스에 연결되지 않습니다.
 - HTML, CSS, JavaScript로 구성한 정적 사이트이며 빌드나 패키지 설치가 필요하지 않습니다.
+
+## GitHub Pages
+
+GitHub 저장소 Settings → Pages에서 `Deploy from a branch`, `main`, `/(root)`를 선택합니다. 루트의 `index.html`이 `dist/`로 연결하며, `.nojekyll`로 빌드 없이 정적 파일을 제공합니다.
+
+이후 main의 dist/ 파일을 업데이트하면 GitHub Pages에도 반영됩니다. 기존 ChatGPT Site는 별도로 게시해야 합니다.
 
 ## 로컬 실행
 

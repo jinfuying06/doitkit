@@ -3,7 +3,7 @@ const conciseOperate=operate;operate=function(){
  let h=conciseOperate();
  const old=statusNotice('예상 참여 수 초과','예상 참여 3,000회를 넘어 3,412회가 참여했습니다. 운영은 계속되며, 초과 구간과 추가 정산액은 확정 예정입니다.');
  const count=currentFailedSends();
- const notice=`<section class="panel review-confirmation operation-notices"><div><strong class="point-label">예상 참여 수 초과 (3,412/3,000)</strong>${count?`<p>경품 발송 실패 ${count}건 · 아래 발송 실패 목록에서 확인하고 재발송해주세요.</p>`:''}</div></section>`;
+ const notice=`<section class="panel review-confirmation operation-notices"><div><strong class="point-label">예상 참여 수 초과 (3,412/3,000)</strong>${count?`<p>경품 발송 실패 ${count}건 · 발송실패목록을 확인해주세요.</p>`:''}</div></section>`;
  return h.replace(old,notice);
 };
 const publishingReview=review;review=function(){return publishingReview().replace('<a class="btn secondary" href="#brand-review">고객 검토 화면 열기</a>','<a class="btn secondary" href="#brand-review">고객 검토 화면 열기</a>'+(!state.published?'<button class="btn" data-action="review-publish">게시하기</button>':''))};

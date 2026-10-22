@@ -22,7 +22,7 @@ const overageOperate=operate;operate=function(){
  let h=demoTrafficDisplay(overageOperate());const t=billingUsage(),count=currentFailedSends();
  const items=[];
  if(t.excess>0)items.push(`<div class="operation-notice-item"><strong class="point-label">기본 포함량 초과 (${trafficNumber(t.participations)}/${trafficNumber(t.included)}회)</strong><p>초과 ${trafficNumber(t.excess)}회 · 현재 추가 이용료 <strong>${trafficNumber(t.amount)}원</strong><br>1회당 ${t.unitPrice}원 · 월 정산 시 결제</p></div>`);
- if(count>0)items.push(`<div class="operation-notice-item"><strong class="point-label">경품 발송 실패 ${count}건</strong><p>아래 발송 실패 목록에서 확인하고 재발송해주세요.</p></div>`);
+ if(count>0)items.push(`<div class="operation-notice-item"><strong class="point-label">경품 발송 실패 ${count}건</strong><p>발송실패목록을 확인해주세요.</p></div>`);
  const notice=`<section class="panel review-confirmation operation-notices internal-billing" aria-label="운영 확인 사항"><div class="operation-notice-list">${items.join('')}</div></section>`;
  return h.replace(/<section class="panel review-confirmation operation-notices">[\s\S]*?<\/section>/,t.excess>0||count>0?notice:'');
 };

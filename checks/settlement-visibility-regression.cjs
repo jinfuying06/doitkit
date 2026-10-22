@@ -15,6 +15,6 @@ run("action('end');action('confirm-event-end')");assert.doesNotMatch(run('report
 run("openWorkspaceEvent({dataset:{eventBrand:'novahome',openEvent:'노바홈 가전박람회 스크래치'}});state.published=true;state.ended=false;state.settings.billing={participations:21000,included:20000,unitPrice:5,finalParticipation:0};retainEvent();go('operate')");
 assert.match(run('operate()'),/기본 포함량 초과 \(21,000\/20,000회\)/);assert.equal(run('billingUsage().amount'),5000);
 run("action('end')");assert.doesNotMatch(elements.app.innerHTML,/end-billing-notice|현재 초과/);run("action('confirm-event-end')");assert.equal(run('billingUsage().amount'),5000);assert.equal(run('state.settings.billing.finalParticipation'),21000);assert.match(run('report()'),/5,000원/);
-run("action('settlement-details')");assert.match(elements.app.innerHTML,/노바홈 · 노바홈 가전박람회 스크래치 · 2026-10-20 10:00 — 2026-10-22 16:00/);assert.doesNotMatch(elements.app.innerHTML,/추가 이용료 없음/);
+run("action('settlement-details')");assert(elements.app.innerHTML.includes(run("'노바홈 · 노바홈 가전박람회 스크래치 · '+state.basic.start+' 10:00 — '+state.basic.end+' 16:00'")));assert.doesNotMatch(elements.app.innerHTML,/추가 이용료 없음/);
 run("state.ended=false;state.settings.billing.finalParticipation=0;retainEvent()");assert(run('applyScheduledChanges(Date.parse("2100-01-01"))'));assert.equal(run('billingUsage().amount'),5000);
 console.log('PASS: highlighted failures, zero-billing hidden and direct-route blocked, live/end/settlement consistency with stale snapshots, context and automatic-end freeze');
